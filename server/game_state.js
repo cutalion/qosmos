@@ -7,6 +7,7 @@ module.exports = function(fieldWidth, fieldHeight) {
   self.phase       = 'idle';
   self.fieldWidth  = fieldWidth;
   self.fieldHeight = fieldHeight;
+  self.nodes       = nodes;
 
   // add a node
   self.join = function(nodeName, name) {
@@ -24,7 +25,16 @@ module.exports = function(fieldWidth, fieldHeight) {
 
   // checks if the game is over
   self.isGameOver = function() {
-    return false;
+    var nd = 0;
+
+    for (var i in nodes) {
+      var node = nodes[i];
+      if (!node.dead) {
+        nd++;
+        if (nd > 1) return false;
+      }
+    }
+    return true;
   }
 
   // returns this round scores

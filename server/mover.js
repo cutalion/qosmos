@@ -25,19 +25,23 @@ module.exports = function() {
 
     switch (n.tickMove) {
       case 'move_left':
-        if (n.x > 0) n.x--;
+        if (n.x > 0)  { n.x-- }
+        else          { n.x = fieldWidth - 1 }
         break;
 
       case 'move_down':
-        if (n.y < fieldHeight - 1) n.y++;
+        if (n.y < fieldHeight - 1) { n.y++ }
+        else                       { n.y = 0 }
         break;
 
       case 'move_up':
-        if (n.y > 0) n.y--;
+        if (n.y > 0) { n.y-- }
+        else         { n.y = fieldHeight -1 }
         break;
 
       case 'move_right':
-        if (n.x < fieldWidth - 1) n.x++;
+        if (n.x < fieldWidth - 1) { n.x++ }
+        else                      { n.x = 0 }
         break;
     }
   }
